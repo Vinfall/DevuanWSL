@@ -1,11 +1,11 @@
-OUT_ZIP=Alpine.zip
-LNCR_EXE=Alpine.exe
+OUT_ZIP=Devuan.zip
+LNCR_EXE=Devuan.exe
 
 DLR=curl
 DLR_FLAGS=-L
-BASE_URL=http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-minirootfs-3.11.5-x86_64.tar.gz
+BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=beowulf,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
 LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20040300/icons.zip
-LNCR_ZIP_EXE=Alpine.exe
+LNCR_ZIP_EXE=Devuan.exe
 
 all: $(OUT_ZIP)
 
@@ -14,11 +14,11 @@ $(OUT_ZIP): ziproot
 	@echo -e '\e[1;31mBuilding $(OUT_ZIP)\e[m'
 	cd ziproot; bsdtar -a -cf ../$(OUT_ZIP) *
 
-ziproot: Launcher.exe rootfs.tar.gz
+ziproot: Launcher.exe rootfs.tar.xz
 	@echo -e '\e[1;31mBuilding ziproot...\e[m'
 	mkdir ziproot
 	cp Launcher.exe ziproot/${LNCR_EXE}
-	cp rootfs.tar.gz ziproot/
+	cp rootfs.tar.xz ziproot/
 
 exe: Launcher.exe
 Launcher.exe: icons.zip
@@ -30,10 +30,10 @@ icons.zip:
 	@echo -e '\e[1;31mDownloading icons.zip...\e[m'
 	$(DLR) $(DLR_FLAGS) $(LNCR_ZIP_URL) -o icons.zip
 
-rootfs.tar.gz: rootfs
-	@echo -e '\e[1;31mBuilding rootfs.tar.gz...\e[m'
-	cd rootfs; sudo tar -zcpf ../rootfs.tar.gz `sudo ls`
-	sudo chown `id -un` rootfs.tar.gz
+rootfs.tar.xz: rootfs
+	@echo -e '\e[1;31mBuilding rootfs.tar.xz...\e[m'
+	cd rootfs; sudo tar -zcpf ../rootfs.tar.xz `sudo ls`
+	sudo chown `id -un` rootfs.tar.xz
 
 rootfs: base.tar.gz profile
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
@@ -57,6 +57,6 @@ clean:
 	-rm -r ziproot
 	-rm Launcher.exe
 	-rm icons.zip
-	-rm rootfs.tar.gz
+	-rm rootfs.tar.xz
 	-sudo rm -r rootfs
 	-rm base.tar.gz
