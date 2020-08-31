@@ -13,23 +13,23 @@ $(OUT_ZIP): ziproot
 	@echo -e '\e[1;31mBuilding $(OUT_ZIP)\e[m'
 	cd ziproot; bsdtar -a -cf ../$(OUT_ZIP) *
 
-ziproot: Launcher.exe rootfs.tar.xz
+ziproot: Launcher.exe rootfs.tar.gz
 	@echo -e '\e[1;31mBuilding ziproot...\e[m'
 	mkdir ziproot
 	cp Launcher.exe ziproot/${LNCR_EXE}
-	cp rootfs.tar.xz ziproot/
+	cp rootfs.tar.gz ziproot/
 
 exe: Launcher.exe
 Launcher.exe: 
 	@echo -e '\e[1;31mExtracting Launcher.exe...\e[m'
 	$(DLR) $(DLR_FLAGS) $(LNCR_URL) -o Launcher.exe
 
-rootfs.tar.xz: rootfs
+rootfs.tar.gz: rootfs
 	@echo -e '\e[1;31mBuilding rootfs.tar.xz...\e[m'
-	cd rootfs; sudo tar -zcpf ../rootfs.tar.xz `sudo ls`
-	sudo chown `id -un` rootfs.tar.xz
+	cd rootfs; sudo tar -zcpf ../rootfs.tar.gz `sudo ls`
+	sudo chown `id -un` rootfs.tar.gz
 
-rootfs: base.tar.xz profile
+rootfs: base.tar.xz 
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
 	sudo tar -zxpf base.tar.xz -C rootfs
@@ -44,6 +44,6 @@ clean:
 	-rm ${OUT_ZIP}
 	-rm -r ziproot
 	-rm Launcher.exe
-	-rm rootfs.tar.xz
+	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar.xz
