@@ -32,7 +32,7 @@ rootfs.tar.gz: rootfs
 rootfs: base.tar.xz 
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
 	mkdir rootfs
-	sudo tar -zxpf base.tar.xz -C rootfs
+	sudo tar -xpf base.tar.xz -C rootfs
 	sudo chmod +x rootfs
 
 base.tar.xz:
