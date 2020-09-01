@@ -3,7 +3,7 @@ Devuan Linux on WSL (Windows 10 1803 or later)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
 [![Build Status](https://img.shields.io/travis/yuk7/AlpineWSL.svg?style=flat-square)](https://travis-ci.org/yuk7/AlpineWSL)
-[![Github All Releases](https://img.shields.io/github/downloads/yuk7/AlpineWSL/total.svg?style=flat-square)](https://github.com/VPraharsha3/DevuanWSL/releases/latest)
+[![Github All Releases](http://img.shields.io/github/downloads/VPraharsha3/DevuanWSL/total.svg?style=flat-square)](https://github.com/VPraharsha3/DevuanWSL/releases/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![License](https://img.shields.io/github/license/yuk7/AlpineWSL.svg?style=flat-square)
 
