@@ -4,7 +4,8 @@ LNCR_EXE=Devuan.exe
 DLR=curl
 DLR_FLAGS=-L
 BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=beowulf,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
-LNCR_URL=https://github.com/yuk7/wsldl/releases/download/20040300/Launcher.exe
+LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20100500/icons.zip
+LNCR_ZIP_EXE=Devuan.exe
 
 all: $(OUT_ZIP)
 
@@ -20,9 +21,14 @@ ziproot: Launcher.exe rootfs.tar.gz
 	cp rootfs.tar.gz ziproot/
 
 exe: Launcher.exe
-Launcher.exe: 
+Launcher.exe: icons.zip
 	@echo -e '\e[1;31mExtracting Launcher.exe...\e[m'
-	$(DLR) $(DLR_FLAGS) $(LNCR_URL) -o Launcher.exe
+        unzip icons.zip $(LNCR_ZIP_EXE)
+	mv $(LNCR_ZIP_EXE) Launcher.exe
+
+icons.zip:
+	@echo -e '\e[1;31mDownloading icons.zip...\e[m'
+	$(DLR) $(DLR_FLAGS) $(LNCR_ZIP_URL) -o icons.zip
 
 rootfs.tar.gz: rootfs
 	@echo -e '\e[1;31mBuilding rootfs.tar.xz...\e[m'
@@ -44,6 +50,7 @@ clean:
 	-rm ${OUT_ZIP}
 	-rm -r ziproot
 	-rm Launcher.exe
+	-rm icons.zip
 	-rm rootfs.tar.gz
 	-sudo rm -r rootfs
 	-rm base.tar.xz
