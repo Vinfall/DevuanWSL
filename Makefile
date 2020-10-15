@@ -23,9 +23,9 @@ ziproot: Launcher.exe rootfs.tar.gz
 exe: Launcher.exe
 Launcher.exe: icons.zip
 	@echo -e '\e[1;31mExtracting Launcher.exe...\e[m'
-        unzip icons.zip $(LNCR_ZIP_EXE)
+	unzip icons.zip $(LNCR_ZIP_EXE)
 	mv $(LNCR_ZIP_EXE) Launcher.exe
-
+	
 icons.zip:
 	@echo -e '\e[1;31mDownloading icons.zip...\e[m'
 	$(DLR) $(DLR_FLAGS) $(LNCR_ZIP_URL) -o icons.zip
