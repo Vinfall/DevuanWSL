@@ -47,7 +47,6 @@ base.tar.xz:
 
 clean:
 	@echo -e '\e[1;31mCleaning files...\e[m'
-	-rm ${OUT_ZIP}
 	-rm -r ziproot
 	-rm Launcher.exe
 	-rm icons.zip
