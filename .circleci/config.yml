@@ -1,0 +1,43 @@
+jobs:
+ build:
+   machine: true
+   steps:
+     - checkout
+     # build
+     - run: make all
+     # cleanup
+     - run: make clean
+     - run: mkdir -p root/project/dist
+     - run: cp Devuan.zip root/project/dist 
+     - persist_to_workspace:
+        root: .
+        paths:
+          - dist
+ publish-github-release:
+   docker:
+    - image: cibuilds/github:0.10
+   steps:
+    - attach_workspace:
+       at: ./dist
+    - run:
+       name: "Publish Release on GitHub"
+       command: |
+        VERSION=${CIRCLE_TAG}
+        ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ./dist
+
+workflows:
+ version: 2
+ main:
+  jobs:
+   - build:
+      filters:
+       tags:
+        only: /^[2][0-9]{7}$/
+   - publish-github-release:
+      requires:
+       - build
+      filters:
+       branches:
+        ignore: /.*/
+       tags:
+        only: /^[2][0-9]{7}$/
