@@ -1,34 +1,25 @@
 jobs:
  build:
    machine: true
+   docker:
+    - image: cibuilds/github:0.10
    steps:
      - checkout
      # build
      - run: make all
      # cleanup
      - run: make clean
-     - run: cp Devuan.zip ~/project
- publish-github-release:
-   docker:
-    - image: cibuilds/github:0.10
-   steps:
-    - run:
-       name: "Publish Release on GitHub"
-       command: |
-        VERSION=${CIRCLE_TAG}
-        ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ~/project/Devuan.zip
+     - run:
+        name: "Publish Release on GitHub"
+        command: |
+         VERSION=${CIRCLE_TAG}
+         ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${VERSION} ~/project/Devuan.zip
 
 workflows:
  version: 2
  main:
   jobs:
    - build:
-      filters:
-       tags:
-        only: /^[2][0-9]{7}$/
-   - publish-github-release:
-      requires:
-       - build
       filters:
        branches:
         ignore: /.*/
