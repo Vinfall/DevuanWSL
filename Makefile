@@ -4,7 +4,7 @@ LNCR_EXE=Devuan.exe
 DLR=curl
 DLR_FLAGS=-L
 BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=beowulf,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
-LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/20100500/icons.zip
+LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/21071600/icons.zip
 LNCR_ZIP_EXE=Devuan.exe
 
 all: $(OUT_ZIP)
