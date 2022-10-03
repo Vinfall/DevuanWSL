@@ -77,7 +77,8 @@ DevuanWSL can build on GNU/Linux or WSL.
 `curl`,`bsdtar`, `sudo`, `tar`(gnu) and `wget` is required for build.
 ```shell
 # Make release
-make
+# Use of `sudo` recommended to avoid weird file permission in rootfs
+sudo make
 # Clean-up
 make clean
 ```
