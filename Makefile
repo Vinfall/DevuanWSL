@@ -6,7 +6,6 @@ DLR_FLAGS=--silent --location
 DLR2=wget
 DLR2_FLAGS=--quiet
 BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
-#LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/21082800/icons.zip
 LNCR_ZIP_URL=https://api.github.com/repos/yuk7/wsldl/releases/latest
 LNCR_ZIP_EXE=Devuan.exe
 
