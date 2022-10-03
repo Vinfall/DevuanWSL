@@ -1,6 +1,5 @@
 # DevuanWSL
-Devuan Linux on WSL (Windows 10 1803 or later)
-based on [wsldl](https://github.com/yuk7/wsldl)
+Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
 This fork is based on Chimaera (current stable) in favor of the original Beowulf (oldstable).
 
@@ -25,7 +24,7 @@ Exe filename is using to the instance name to register.
 If you rename it, you can register with a different name and have multiple installs.
 
 
-## How-to-Use(for Installed Instance)
+## How-to-Use (for Installed Instance)
 #### exe Usage
 ```dos
 Usage :
@@ -67,7 +66,7 @@ Usage :
 
 #### How to uninstall instance
 ```powershell
-Devuan.exe clean
+.\Devuan.exe clean
 ```
 
 ## How-to-Build
