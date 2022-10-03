@@ -66,16 +66,15 @@ Usage :
 
 
 #### How to uninstall instance
-```dos
->Devuan.exe clean
-
+```powershell
+Devuan.exe clean
 ```
 
 ## How-to-Build
 DevuanWSL can build on GNU/Linux or WSL.
 
 `curl`,`bsdtar`, `sudo`, `tar`(gnu) and `wget` is required for build.
-```shell
+```bash
 # Make release
 # Use of `sudo` recommended to avoid weird file permission in rootfs
 sudo make
