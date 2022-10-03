@@ -80,3 +80,8 @@ sudo make
 # Clean-up
 make clean
 ```
+## Todo
+
+- [ ] Add CI (~~Not Actions as GitHub only allows files up to 100 MB~~ maybe *release* instead of *artifact* will work)
+- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI
+
