@@ -2,8 +2,8 @@ OUT_ZIP=Devuan.zip
 LNCR_EXE=Devuan.exe
 
 DLR=curl
-DLR_FLAGS=-L
-BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=beowulf,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
+DLR_FLAGS=-L -s
+BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
 LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/21082800/icons.zip
 LNCR_ZIP_EXE=Devuan.exe
 
