@@ -4,7 +4,7 @@ LNCR_EXE=Devuan.exe
 DLR=curl
 DLR_FLAGS=--silent --location
 DLR2=wget
-DLR2_FLAGS=--quiet
+DLR2_FLAGS=--quiet --continue
 BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
 LNCR_ZIP_URL=https://api.github.com/repos/yuk7/wsldl/releases/latest
 LNCR_ZIP_EXE=Devuan.exe
