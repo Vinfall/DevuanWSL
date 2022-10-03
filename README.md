@@ -2,15 +2,13 @@
 Devuan Linux on WSL (Windows 10 1803 or later)
 based on [wsldl](https://github.com/yuk7/wsldl)
 
-![screenshot](https://github.com/VPraharsha3/DevuanWSL/blob/master/img/screenshot.jpg)
+This fork is based on Chimaera (current stable) in favor of the original Beowulf (oldstable).
 
-![Automated Releases](https://img.shields.io/badge/-Automated%20Releases-success?logo=circleci&style=plastic)
-[![CircleCI](https://circleci.com/gh/VPraharsha03/DevuanWSL.svg?style=svg)](https://circleci.com/gh/VPraharsha03/DevuanWSL)
-[![Github All Releases](http://img.shields.io/github/downloads/VPraharsha3/DevuanWSL/total.svg?style=flat-square)](https://github.com/VPraharsha3/DevuanWSL/releases/latest)
+![screenshot](https://github.com/Vinfall/DevuanWSL/blob/chimaera/img/screenshot.webp)
+
+[![Github All Releases](http://img.shields.io/github/downloads/Vinfall/DevuanWSL/total.svg?style=flat-square)](https://github.com/Vinfall/DevuanWSL/releases/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![License](https://img.shields.io/github/license/yuk7/AlpineWSL.svg?style=flat-square)
-
-### [Download](https://github.com/VPraharsha3/DevuanWSL/releases)
 
 
 ## Requirements
@@ -18,11 +16,11 @@ based on [wsldl](https://github.com/yuk7/wsldl)
 * Windows Subsystem for Linux feature is enabled.
 
 ## Install
-#### 1. [Download](https://github.com/VPraharsha3/DevuanWSL/releases) installer zip
 
-#### 2. Extract all files in zip file to same directory
+1. [Download](https://github.com/Vinfall/DevuanWSL/releases) installer zip
+2. Extract all files in zip file to same directory (e.g. `C:\WSL\Devuan`)
+3. Run `Devuan.exe` to Extract rootfs and Register to WSL
 
-#### 3.Run Devuan.exe to Extract rootfs and Register to WSL
 Exe filename is using to the instance name to register.
 If you rename it, you can register with a different name and have multiple installs.
 
@@ -76,7 +74,10 @@ Usage :
 ## How-to-Build
 DevuanWSL can build on GNU/Linux or WSL.
 
-`curl`,`bsdtar`,`tar`(gnu) and `sudo` is required for build.
+`curl`,`bsdtar`, `sudo`, `tar`(gnu) and `wget` is required for build.
 ```shell
-$ make
+# Make release
+make
+# Clean-up
+make clean
 ```
