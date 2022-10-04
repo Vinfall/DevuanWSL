@@ -72,7 +72,7 @@ Usage :
 ## How-to-Build
 DevuanWSL can build on GNU/Linux or WSL.
 
-`curl`,`bsdtar`, `sudo`, `tar`(gnu) and `wget` is required for build.
+`curl`,`bsdtar`, `jq`, `sudo`, `tar`(gnu) and `wget` is required for build.
 ```bash
 # Make release
 # Use of `sudo` recommended to avoid weird file permission in rootfs
