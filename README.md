@@ -16,7 +16,7 @@ This fork is based on Chimaera (current stable) in favor of the original Beowulf
 
 ## Install
 
-1. [Download](https://github.com/Vinfall/DevuanWSL/releases) installer zip
+1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [actions](https://github.com/Vinfall/DevuanWSL/actions/workflows/action.yml?query=is%3Asuccess) (recommended)
 2. Extract all files in zip file to same directory (e.g. `C:\WSL\Devuan`)
 3. Run `Devuan.exe` to Extract rootfs and Register to WSL
 
@@ -79,11 +79,10 @@ sudo apt install -y curl libarchive-tools jq tar unzip wget
 # Make release
 # Use of `sudo` recommended to avoid weird file permission in rootfs
 sudo make
-# Clean-up
-make clean
+# Clean-up using `sudo` as some files are owned by root
+sudo make clean
 ```
 ## Todo
 
-- [ ] Add CI (~~Not Actions as GitHub only allows files up to 100 MB~~ maybe *release* instead of *artifact* will work)
-- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI
-
+- [x] Add CI (GitHub Actions)
+- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI (not interested as we have nightly actions)
