@@ -29,9 +29,9 @@ jobs:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: install dependencies
-        run: apt install -y curl libarchive-tools jq tar unzip wget
+        run: sudo apt install -y curl libarchive-tools jq tar unzip wget
       - name: build package
-        run: make
+        run: sudo make
       # Create tags using daily version
       - uses: fregante/daily-version-action@v2
         name: Create tag if necessary
