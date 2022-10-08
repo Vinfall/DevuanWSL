@@ -14,9 +14,9 @@ on:
             - info
             - warning
             - debug
-  #schedule:
+  schedule:
     # Trigger every day at 23:50 UTC
-  #  - cron: "50 23 * * *"
+    - cron: "50 23 * * *"
 
 jobs:
   build:
@@ -39,7 +39,6 @@ jobs:
       - name: save release as artifact
         uses: actions/upload-artifact@v3
         with:
-          retention-days: 7
+          retention-days: 3
           name: Devuan.zip
           path: release
-    
