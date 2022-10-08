@@ -32,7 +32,10 @@ jobs:
       - name: install dependencies
         run: sudo apt install -y curl libarchive-tools jq tar unzip wget
       - name: build package
-        run: sudo make && sudo make clean
+        run: |
+             sudo make
+             sudo make clean
+             mv Devuan.zip release/Devuan.zip
       - name: save release as artifact
         uses: actions/upload-artifact@v3
         with:
