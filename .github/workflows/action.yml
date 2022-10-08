@@ -1,0 +1,60 @@
+name: "DevuanWSL Nightly Release"
+
+on:
+  push:
+    branches: [ chimaera ]
+  workflow_dispatch:
+      inputs:
+        logLevel:
+          description: 'Log level'
+          required: true
+          default: 'warning'
+          type: choice
+          options:
+            - info
+            - warning
+            - debug
+  #schedule:
+    # Trigger every day at 23:50 UTC
+  #  - cron: "50 23 * * *"
+
+jobs:
+  build:
+    runs-on: debian-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+        with:
+          ref: 'chimaera'
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - name: install dependencies
+        run: apt install -y curl libarchive-tools jq tar unzip wget
+      - name: build package
+        run: make
+      # Create tags using daily version
+      - uses: fregante/daily-version-action@v2
+        name: Create tag if necessary
+        id: daily-version
+      # Upload files
+      - if: steps.daily-version.outputs.created
+        name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: Devuan.zip
+          tag: ${{ steps.daily-version.outputs.version }}
+          overwrite: true
+          file_glob: true
+      # Create releases
+      - uses: actions/checkout@v3
+        with:
+          ref: 'chimaera'
+      - uses: ncipollo/release-action@v1
+        with:
+          commit: "${{ steps.daily-version.outputs.version }}"
+          release_name: "Nightly"
+          body: "Latest nightly release"
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
