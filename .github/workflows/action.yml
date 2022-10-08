@@ -28,45 +28,15 @@ jobs:
           ref: 'chimaera'
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - run: mkdir -p release
       - name: install dependencies
         run: sudo apt install -y curl libarchive-tools jq tar unzip wget
       - name: build package
         run: sudo make && sudo make clean
-      - name: commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          #git add .
-          # Commit using ISO date
-          date --iso-8601 | git commit -F -
-      - name: push changes
-        uses: ad-m/github-push-action@master
+      - name: save release as artifact
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-      # Create tags using daily version
-      - uses: fregante/daily-version-action@v2
-        name: Create tag if necessary
-        id: daily-version
-      # Upload files
-      - if: steps.daily-version.outputs.created
-        name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: Devuan.zip
-          tag: ${{ steps.daily-version.outputs.version }}
-          overwrite: true
-          file_glob: true
-      # Create releases
-      - uses: actions/checkout@v3
-        with:
-          ref: 'chimaera'
-      - uses: ncipollo/release-action@v1
-        with:
-          commit: "${{ steps.daily-version.outputs.version }}"
-          release_name: "Nightly"
-          body: "Latest nightly release"
-          draft: false
-          prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+          retention-days: 7
+          name: Devuan.zip
+          path: release
+    
