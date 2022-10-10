@@ -16,7 +16,7 @@ This fork is based on Chimaera (current stable) in favor of the original Beowulf
 
 ## Install
 
-1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [actions](https://github.com/Vinfall/DevuanWSL/actions/workflows/action.yml?query=is%3Asuccess) (recommended)
+1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [weekly action build](https://github.com/Vinfall/DevuanWSL/actions/workflows/action.yml?query=is%3Asuccess) (recommended)
 2. Extract all files in zip file to same directory (e.g. `C:\WSL\Devuan`)
 3. Run `Devuan.exe` to Extract rootfs and Register to WSL
 
@@ -72,10 +72,10 @@ Usage :
 ## How-to-Build
 DevuanWSL can build on GNU/Linux or WSL.
 
-`curl`,`bsdtar`, `jq`, `sudo`, `tar`(gnu),`unzip` and `wget` is required for build.
+`curl`,`bsdtar`, `jq`, `sudo`, `tar`(gnu) and `unzip` is required for build.
 ```bash
 # Install build tools
-sudo apt install -y curl libarchive-tools jq tar unzip wget
+sudo apt install -y curl libarchive-tools jq tar unzip
 # Make release
 # Use of `sudo` recommended to avoid weird file permission in rootfs
 sudo make
