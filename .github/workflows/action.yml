@@ -1,8 +1,10 @@
-name: "DevuanWSL Nightly Release"
+name: "DevuanWSL Actions"
 
 on:
   push:
     branches: [ chimaera ]
+    # Trigger only when Makefile is changed
+    paths: ['Makefile']
   workflow_dispatch:
       inputs:
         logLevel:
@@ -15,12 +17,14 @@ on:
             - warning
             - debug
   schedule:
-    # Trigger every day at 23:50 UTC
-    - cron: "50 23 * * *"
+    # Trigger every Sunday at 23:50 UTC
+    - cron: "50 23 * * sun"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Skip build with [ci skip] in commit
+    if: "! contains(github.event.head_commit.message, '[ci skip]')"
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
@@ -30,7 +34,7 @@ jobs:
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - run: mkdir -p release
       - name: install dependencies
-        run: sudo apt install -y curl libarchive-tools jq tar unzip wget
+        run: sudo apt install -y curl libarchive-tools jq tar unzip
       - name: build package
         run: |
              sudo make
