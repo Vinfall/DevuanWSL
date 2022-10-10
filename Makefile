@@ -48,7 +48,6 @@ base.tar.xz:
 clean:
 	@echo -e '\e[1;31mCleaning files...\e[m'
 	-rm -r ziproot
-	-rm url
 	-rm Launcher.exe
 	-rm icons.zip
 	-rm rootfs.tar.gz
