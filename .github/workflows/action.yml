@@ -43,6 +43,6 @@ jobs:
       - name: save release as artifact
         uses: actions/upload-artifact@v3
         with:
-          retention-days: 3
+          retention-days: 10
           name: Devuan.zip
           path: release
