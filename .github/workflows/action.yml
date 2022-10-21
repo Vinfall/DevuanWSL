@@ -1,4 +1,4 @@
-name: "DevuanWSL Actions"
+name: "DevuanWSL Build"
 
 on:
   push:
@@ -6,16 +6,6 @@ on:
     # Trigger only when Makefile is changed
     paths: ['Makefile']
   workflow_dispatch:
-      inputs:
-        logLevel:
-          description: 'Log level'
-          required: true
-          default: 'warning'
-          type: choice
-          options:
-            - info
-            - warning
-            - debug
   schedule:
     # Trigger every Sunday at 23:50 UTC
     - cron: "50 23 * * sun"
