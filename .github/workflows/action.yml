@@ -7,8 +7,8 @@ on:
     paths: ['Makefile']
   workflow_dispatch:
   schedule:
-    # Trigger every Sunday at 23:50 UTC
-    - cron: "50 23 * * sun"
+    # Trigger every Monday at 23:50 UTC
+    - cron: "50 23 * * mon"
 
 jobs:
   build:
