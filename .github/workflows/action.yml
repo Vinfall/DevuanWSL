@@ -25,14 +25,15 @@ jobs:
       - run: mkdir -p release
       - name: install dependencies
         run: sudo apt install -y curl libarchive-tools jq tar unzip xz-utils
-      - name: build package
+      - name: build package & make hash
         run: |
              sudo make
              sudo make clean
-             mv Devuan.zip release/Devuan.zip
+             sha512sum Devuan.zip > Devuan.zip.sha512
+             mv Devuan.zip* release/
       - name: save release as artifact
         uses: actions/upload-artifact@v3
         with:
           retention-days: 10
-          name: Devuan.zip
+          name: Devuan-packed.zip
           path: release
