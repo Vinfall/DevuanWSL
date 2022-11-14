@@ -30,11 +30,10 @@ jobs:
              sudo make
              sudo make clean
              sha512sum Devuan.zip > Devuan.zip.sha512
-      - name: save artifact as release
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        run: |
-          artifacts="--attach ./Devuan.zip --attach ./Devuan.zip.sha512"
-          tag_name="prerelease"
-          hub release create --prerelease $artifacts --message "$tag_name" "$tag_name"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             mv Devuan.zip* release/
+      - name: save release as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          retention-days: 10
+          name: Devuan-packed.zip
+          path: release
