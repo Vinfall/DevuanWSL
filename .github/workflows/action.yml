@@ -37,3 +37,14 @@ jobs:
           retention-days: 10
           name: Devuan-packed.zip
           path: release
+      - name: upload artifact to release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: True
+          prerelease: True
+          tag: "action-build"
+          omitBody: True
+          omitBodyDuringUpdate: True
+          omitNameDuringUpdate: True
+          artifacts: "Devuan-packed.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
