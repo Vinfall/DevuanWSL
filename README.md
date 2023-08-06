@@ -16,7 +16,7 @@ This fork is based on Chimaera (current stable) in favor of the original Beowulf
 
 ## Install
 
-1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [weekly action build](https://github.com/Vinfall/DevuanWSL/actions/workflows/action.yml?query=is%3Asuccess) (recommended)
+1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [weekly action build](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build) (recommended)
 2. Extract all files in zip file to same directory (e.g. `C:\WSL\Devuan`)
 3. Run `Devuan.exe` to Extract rootfs and Register to WSL
 
