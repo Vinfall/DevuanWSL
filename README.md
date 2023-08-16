@@ -1,7 +1,7 @@
 # DevuanWSL
 Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
-This fork is based on Chimaera (current stable) in favor of the original Beowulf (oldstable).
+This fork is based on Chimaera (current oldstable) in favor of the original Beowulf, and this would soon bump to Daedalus (current stable) once upstream provides [image-devuan](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/) based on Daedalus.
 
 ![screenshot](https://github.com/Vinfall/DevuanWSL/blob/chimaera/img/screenshot.webp)
 
