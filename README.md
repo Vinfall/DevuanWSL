@@ -1,7 +1,7 @@
 # DevuanWSL
 Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
-This fork is based on Chimaera (current oldstable) in favor of the original Beowulf, and this would soon bump to Daedalus (current stable) once upstream provides [image-devuan](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/) based on Daedalus.
+This fork is based on Daedalus (current stable) in favor of the original Beowulf.
 
 ![screenshot](https://github.com/Vinfall/DevuanWSL/blob/chimaera/img/screenshot.webp)
 
@@ -85,4 +85,4 @@ sudo make clean
 ## Todo
 
 - [x] Add CI (GitHub Actions)
-- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI (not interested as we have weekly action builds)
+- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI (not interested as we have action releases)
