@@ -17,7 +17,7 @@ jobs:
     if: "! contains(github.event.head_commit.message, '[ci skip]')"
     steps:
       - name: checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: 'daedalus'
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
@@ -32,7 +32,7 @@ jobs:
              sha512sum Devuan.zip > Devuan.zip.sha512
              mv Devuan.zip* release/
       - name: save release as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           retention-days: 10
           name: Devuan-packed.zip
