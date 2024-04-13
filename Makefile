@@ -4,7 +4,7 @@ LNCR_EXE=Devuan.exe
 DLR=curl
 DLR_FLAGS=--silent --location
 BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=daedalus,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
-LNCR_ZIP_URL!=curl --silent https://api.github.com/repos/yuk7/wsldl/releases | jq --raw-output ".[0].assets[].browser_download_url" | grep --extended-regexp "icons.zip"
+LNCR_ZIP_URL=https://github.com/Vinfall/wsldl/releases/download/24041300/icons.zip
 LNCR_ZIP_EXE=Devuan.exe
 
 all: $(OUT_ZIP)
@@ -14,11 +14,11 @@ $(OUT_ZIP): ziproot
 	@echo -e '\e[1;31mBuilding $(OUT_ZIP)\e[m'
 	cd ziproot; bsdtar -a -cf ../$(OUT_ZIP) *
 
-ziproot: Launcher.exe rootfs.tar.gz
+ziproot: Launcher.exe rootfs.tar.zst
 	@echo -e '\e[1;31mBuilding ziproot...\e[m'
 	mkdir ziproot
 	cp Launcher.exe ziproot/${LNCR_EXE}
-	cp rootfs.tar.gz ziproot/
+	cp rootfs.tar.zst ziproot/
 
 exe: Launcher.exe
 Launcher.exe: icons.zip
@@ -30,10 +30,10 @@ icons.zip:
 	@echo -e '\e[1;31mDownloading icons.zip...\e[m'
 	$(DLR) $(DLR_FLAGS) $(LNCR_ZIP_URL) -o icons.zip
 
-rootfs.tar.gz: rootfs
-	@echo -e '\e[1;31mBuilding rootfs.tar.xz...\e[m'
-	cd rootfs; sudo tar -zcpf ../rootfs.tar.gz `sudo ls`
-	sudo chown `id -un` rootfs.tar.gz
+rootfs.tar.zst: rootfs
+	@echo -e '\e[1;31mBuilding rootfs.tar.zst...\e[m'
+	cd rootfs; sudo tar --use-compress-program="zstd -T0" -cpf ../rootfs.tar.zst `sudo ls`
+	sudo chown `id -un` rootfs.tar.zst
 
 rootfs: base.tar.xz 
 	@echo -e '\e[1;31mBuilding rootfs...\e[m'
@@ -50,6 +50,6 @@ clean:
 	-rm -r ziproot
 	-rm Launcher.exe
 	-rm icons.zip
-	-rm rootfs.tar.gz
+	-rm rootfs.tar.xz
 	-sudo rm -r rootfs
 	-rm base.tar.xz
