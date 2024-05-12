@@ -1,16 +1,17 @@
 # DevuanWSL
+
 Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
 This fork is based on Daedalus (current stable) in favor of the original Beowulf.
 
-![screenshot](https://github.com/Vinfall/DevuanWSL/blob/chimaera/img/screenshot.webp)
+![screenshot](https://github.com/Vinfall/DevuanWSL/blob/daedalus-tarxz/img/screenshot.webp)
 
 [![Github All Releases](http://img.shields.io/github/downloads/Vinfall/DevuanWSL/total.svg?style=flat-square)](https://github.com/Vinfall/DevuanWSL/releases/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-![License](https://img.shields.io/github/license/yuk7/AlpineWSL.svg?style=flat-square)
-
+![License](https://img.shields.io/github/license/Vinfall/DevuanWSL.svg?style=flat-square)
 
 ## Requirements
+
 * Windows 10 1803 April 2018 Update x64 or later.
 * Windows Subsystem for Linux feature is enabled.
 
@@ -23,10 +24,11 @@ This fork is based on Daedalus (current stable) in favor of the original Beowulf
 Exe filename is using to the instance name to register.
 If you rename it, you can register with a different name and have multiple installs.
 
-
 ## How-to-Use (for Installed Instance)
-#### exe Usage
-```dos
+
+### Usage
+
+```powershell
 Usage :
     <no args>
       - Open a new shell with your default settings.
@@ -63,25 +65,27 @@ Usage :
       - Print this usage message.
 ```
 
+### Uninstall
 
-#### How to uninstall instance
 ```powershell
 .\Devuan.exe clean
 ```
 
 ## How-to-Build
-DevuanWSL can build on GNU/Linux or WSL.
+DevuanWSL can be built on GNU/Linux or WSL.
 
-`curl`,`bsdtar`, `jq`, `sudo`, `tar`(gnu) and `unzip` is required for build.
+`curl`, `bsdtar`, `jq` and `unzip` is required for build.
+
 ```bash
 # Install build tools
-sudo apt install -y curl libarchive-tools jq tar unzip
+sudo apt install -y curl libarchive-tools jq unzip
 # Make release
 # Use of `sudo` recommended to avoid weird file permission in rootfs
 sudo make
 # Clean-up using `sudo` as some files are owned by root
 sudo make clean
 ```
+
 ## Todo
 
 - [x] Add CI (GitHub Actions)
