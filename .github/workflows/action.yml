@@ -2,7 +2,7 @@ name: "DevuanWSL Build"
 
 on:
   push:
-    branches: [daedalus-zstd]
+    branches: [daedalus-tarxz]
     # Trigger only when Makefile is changed
     paths: ["Makefile"]
   workflow_dispatch:
@@ -13,8 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Skip build with [ci skip] in commit
-    if: "! contains(github.event.head_commit.message, '[ci skip]')"
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
