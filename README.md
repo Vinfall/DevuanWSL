@@ -14,10 +14,11 @@ This fork is based on Daedalus (current stable) in favor of the original Beowulf
 
 * Windows 10 1803 April 2018 Update x64 or later.
 * Windows Subsystem for Linux feature is enabled.
+* Latest WSL recommended.
 
 ## Install
 
-1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [weekly action build](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build) (recommended)
+1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [monthly action build](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build) (recommended)
 2. Extract all files in zip file to same directory (e.g. `C:\WSL\Devuan`)
 3. Run `Devuan.exe` to Extract rootfs and Register to WSL
 
@@ -72,6 +73,7 @@ Usage :
 ```
 
 ## How-to-Build
+
 DevuanWSL can be built on GNU/Linux or WSL.
 
 `curl`, `bsdtar`, `jq` and `unzip` is required for build.
