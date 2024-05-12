@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - run: mkdir -p release
       - name: install dependencies
-        run: sudo apt install -y curl libarchive-tools jq tar unzip xz-utils zstd
+        run: sudo apt install -y curl libarchive-tools jq tar unzip
       - name: build package & make hash
         run: |
           sudo make
