@@ -2,9 +2,9 @@ name: "DevuanWSL Build"
 
 on:
   push:
-    branches: [ daedalus-zstd ]
+    branches: [daedalus-zstd]
     # Trigger only when Makefile is changed
-    paths: ['Makefile']
+    paths: ["Makefile"]
   workflow_dispatch:
   schedule:
     # Trigger on the 1st day of every month at 12:00 UTC
@@ -19,7 +19,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
         with:
-          ref: 'daedalus-zstd'
+          ref: "daedalus-tarxz"
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - run: mkdir -p release
@@ -27,10 +27,10 @@ jobs:
         run: sudo apt install -y curl libarchive-tools jq tar unzip xz-utils zstd
       - name: build package & make hash
         run: |
-             sudo make
-             sudo make clean
-             sha512sum Devuan.zip > Devuan.zip.sha512
-             mv Devuan.zip* release/
+          sudo make
+          sudo make clean
+          sha512sum Devuan.zip > Devuan.zip.sha512
+          mv Devuan.zip* release/
       - name: save release as artifact
         uses: actions/upload-artifact@v4
         with:
