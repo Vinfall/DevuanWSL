@@ -4,5 +4,7 @@ res/
 # config
 .vscode
 # make cache
-icons.zip
+*.zip
+*.exe
 rootfs.*
+ziproot
