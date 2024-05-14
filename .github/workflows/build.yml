@@ -1,4 +1,4 @@
-name: "DevuanWSL Build"
+name: "Build DevuanWSL"
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
       - name: save release as artifact
         uses: actions/upload-artifact@v4
         with:
-          retention-days: 10
+          retention-days: 90
           path: "release/*"
       - name: upload artifact to release
         uses: ncipollo/release-action@v1
