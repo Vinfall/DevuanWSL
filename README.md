@@ -91,4 +91,4 @@ sudo make clean
 ## Todo
 
 - [x] Add CI (GitHub Actions)
-- [ ] Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI (not interested as we have action releases)
+- ~~Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI~~ (not interested as we have action releases)
