@@ -12,9 +12,9 @@ This fork is based on Daedalus (current stable) in favor of the original Beowulf
 
 ## Requirements
 
-* Windows 10 1803 April 2018 Update x64 or later.
-* Windows Subsystem for Linux feature is enabled.
-* Latest WSL recommended.
+- Windows 10 1803 April 2018 Update x64 or later.
+- Windows Subsystem for Linux feature is enabled.
+- Latest WSL recommended.
 
 ## Install
 
