@@ -1,5 +1,9 @@
 # DevuanWSL
 
+> [!WARNING]
+> While automated releases are still available, I no longer actively use WSL.
+> This means tarballs are provided AS IS and it may break at any time (which is very unlikely though).
+
 Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
 This fork is based on Daedalus (current stable) in favor of the original Beowulf.
@@ -88,7 +92,8 @@ sudo make
 sudo make clean
 ```
 
-## Todo
+## TODO
 
 - [x] Add CI (GitHub Actions)
+- [ ] Support new .wsl format (unreleased)
 - ~~Write a WebHook to automatically fetch [Atom feed](https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=chimaera,variant=default/rssAll) of the upstream build & trigger CI~~ (not interested as we have action releases)
