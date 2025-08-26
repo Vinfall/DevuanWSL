@@ -1,13 +1,8 @@
 # DevuanWSL
 
-> [!WARNING]
-> Deprecated, either build it yourself or use [DebianSidWSL2](https://github.com/sileshn/DebianSidWSL2) instead.
-
 Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
 This fork is based on Daedalus (current stable) in favor of the original Beowulf.
-
-![screenshot](/img/screenshot.webp)
 
 ## Requirements
 
