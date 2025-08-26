@@ -27,6 +27,9 @@ It's possible to have multiple installs by renaming it to something like `Dedede
 
 ## Usage
 
+<details><summary>Click to expand</summary>
+<p>
+
 ```powershell
 Usage:
   <no args>
@@ -63,6 +66,9 @@ Usage:
   help
     - Print this usage message.
 ```
+
+</p>
+</details>
 
 ## Build
 
