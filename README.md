@@ -80,7 +80,8 @@ DevuanWSL can be built on GNU/Linux or WSL.
 # Install build tools
 sudo apt install -y curl libarchive-tools jq unzip
 # Make release
-# Use of `sudo` recommended to avoid weird file permission in rootfs
+# Use `sudo` here as partitions mounted via WSL are owned by current user
+# (e.g. UID 1000) but rootfs requires root aka. UID 0
 sudo make
 # Clean-up using `sudo` as some files are owned by root
 sudo make clean
