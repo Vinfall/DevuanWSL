@@ -3,7 +3,7 @@ LNCR_EXE=Devuan.exe
 
 DLR=curl
 DLR_FLAGS=--silent --location
-BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=daedalus,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
+BASE_URL=https://jenkins.linuxcontainers.org/view/Images/job/image-devuan/architecture=amd64,release=excalibur,variant=default/lastSuccessfulBuild/artifact/rootfs.tar.xz
 LNCR_ZIP_URL=https://github.com/yuk7/wsldl/releases/download/`curl https://api.github.com/repos/yuk7/wsldl/releases/latest -s | jq .name -r`/icons.zip
 LNCR_ZIP_EXE=Devuan.exe
 

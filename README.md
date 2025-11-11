@@ -1,8 +1,8 @@
 # DevuanWSL
 
-Devuan Linux on WSL2 based on [DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
+Devuan Linux on WSL2 based on [VPraharsha03/DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
 
-This fork is based on Daedalus (current stable) in favor of the original Beowulf.
+This fork is based on Excalibur released on 2025-11-02, whose Debian cousin is Trixie aka. Debian 13.
 
 ## Requirements
 
