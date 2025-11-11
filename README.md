@@ -6,9 +6,10 @@ This fork is based on Excalibur released on 2025-11-02, whose Debian cousin is T
 
 ## Install
 
-1. Download installer zip from [release](https://github.com/Vinfall/DevuanWSL/releases/latest) or [monthly action build](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build) (recommended)
-2. Extract all files in zip file to same directory (e.g. `D:\WSL\Devuan`)
-3. Run `Devuan.exe` to extract rootfs and Register to WSL
+1. Download installer zip from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
+2. (Optinally) verify hash to avoid file corruption
+3. Extract all files in zip file to same directory (e.g. `D:\WSL\Devuan`)
+4. Run `Devuan.exe` to extract rootfs and Register to WSL
 
 `Devuan.exe` is used as WSL distro label.
 It's possible to have multiple installs by renaming it to something like `Dedede.exe`.
