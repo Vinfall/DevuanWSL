@@ -13,6 +13,7 @@ zip: $(OUT_ZIP)
 $(OUT_ZIP): ziproot
 	@echo -e '\e[1;31mBuilding $(OUT_ZIP)\e[m'
 	cd ziproot; bsdtar -a -cf ../$(OUT_ZIP) *
+	sha512sum $(OUT_ZIP) > $(OUT_ZIP).sha512
 
 ziproot: Launcher.exe rootfs.tar.xz
 	@echo -e '\e[1;31mBuilding ziproot...\e[m'
