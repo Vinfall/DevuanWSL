@@ -1,8 +1,10 @@
 # DevuanWSL
 
-Devuan Linux on WSL2 based on [VPraharsha03/DevuanWSL](https://github.com/VPraharsha03/DevuanWSL), powered by [wsldl](https://github.com/yuk7/wsldl).
+Devuan Linux on WSL2 based on [VPraharsha03/DevuanWSL](https://github.com/VPraharsha03/DevuanWSL),
+powered by [wsldl](https://github.com/yuk7/wsldl).
 
-This fork is based on Excalibur released on 2025-11-02, whose Debian cousin is Trixie aka. Debian 13.
+This fork is based on Excalibur released on 2025-11-02,
+whose Debian cousin is Trixie aka. Debian 13.
 
 ## Install
 
@@ -84,12 +86,33 @@ sudo make clean
 
 ## Backup
 
-Personally I prefer using native `wsl --export` + zstd over `wsldl backup` mentioned in [#Usage](#usage), but you can choose whichever you like.
+It's suggested to compact the volume first as WSL does not free the space automatically:
 
 ```powershell
 wsl --shutdown
+cd "path\to\WSL\Devuan"
+# requires Hyper-V feature
+Optimize-VHD -Path .\ext4.vhdx -Mode Retrim -Confirm -Whatif # dry run
+Optimize-VHD -Path .\ext4.vhdx -Mode Retrim -Confirm
+```
 
-# wsl --export + zstd, impressive compression
+`wsldl backup` mentioned in [#Usage](#usage) is recommended
+as it does not require extra tools,
+but you can use whatever method you like.
+
+You can use native `wsl --export` + zstd to compress much faster:
+
+```powershell
+wsl --shutdown
 # you need to install ZSTD on Windows (NOT inside WSL!)
 cmd /c "wsl --export Devuan - | zstd -T0 -o Devuan-$(Get-Date -UFormat "%Y%m%d").tar.zst"
 ```
+
+It's even possible to use bash+zstd via [cosmoscc][cosmoscc]
+to avoid ZSTD on Windows or PowerlessShell:
+
+```sh
+bash-5.2$ wsl.exe --export Devuan - | zstd -T0 -o ./Devuan-$(date +'%Y%m%d').tar.zst
+```
+
+[cosmoscc]: https://github.com/jart/cosmopolitan#getting-started
