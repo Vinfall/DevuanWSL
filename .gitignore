@@ -5,4 +5,5 @@
 *.exe
 rootfs.*
 ziproot
-*.sha512
+*.sha*
+*.hash
