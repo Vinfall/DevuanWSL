@@ -6,11 +6,10 @@ permissions:
 on:
   push:
     branches: [main]
-    # Trigger only when Makefile is changed
-    paths: [Makefile]
+    paths: [Makefile] # trigger only on Makefile change
   workflow_dispatch:
   schedule:
-    # Trigger on the 1st day of every month at 12:00 UTC
+    # trigger on the 1st day of every month at 12:00 UTC
     - cron: 0 12 1 * *
 
 jobs:
@@ -21,29 +20,22 @@ jobs:
         uses: actions/checkout@v5
         with:
           ref: main
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-      - run: mkdir -p release
-      - name: install dependencies
-        run: sudo apt install -y curl libarchive-tools jq tar unzip
-      - name: build package & make hash
+          persist-credentials: false
+          fetch-depth: 0 # required to push refs
+      - name: build
         run: |
+          mkdir -p release
+          sudo apt install -y curl libarchive-tools jq tar unzip
           sudo make
           sudo make clean
           mv Devuan.zip* release/
-      - name: save release as artifact
+      - name: upload as artifact
         uses: actions/upload-artifact@v4
         with:
           retention-days: 90
           path: release/*
-      - name: upload artifact to release
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: True
-          prerelease: True
-          tag: action-build
-          omitBody: True
-          omitBodyDuringUpdate: True
-          omitNameDuringUpdate: True
-          artifacts: release/Devuan.zip*
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: upload as release
+        run: gh release upload "${TAG}" --clobber release/Devuan.zip*
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: action-build
