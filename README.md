@@ -6,6 +6,10 @@ powered by [wsldl](https://github.com/yuk7/wsldl).
 This fork is based on Excalibur released on 2025-11-02,
 whose Debian cousin is Trixie aka. Debian 13.
 
+## Disclaimer
+
+THIS REPO IS NOT AFFILIATE TO THE OFFICIAL "DEVUAN LINUX" DISTRIBUTION IN ANY WAY!
+
 ## Install
 
 1. Download installer zip from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
