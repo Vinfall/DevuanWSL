@@ -12,18 +12,44 @@ THIS REPO IS NOT AFFILIATE TO THE OFFICIAL "DEVUAN LINUX" DISTRIBUTION IN ANY WA
 
 ## Install
 
-1. Download installer zip from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
-2. (Optinally) verify hash to avoid file corruption
-3. Extract all files in zip file to same directory (e.g. `D:\WSL\Devuan`)
-4. Run `Devuan.exe` to extract rootfs and Register to WSL
+Traditional `.zip` with rootfs+wsldl and the new `.wsl` format are both provided.
 
-`Devuan.exe` is used as WSL distro label.
+`.zip` is recommended and [#Usage](#usage)/[#Backup](#backup) only applies to this.
+
+You can use `.wsl` if:
+
+- you don't mind installing WSL to system drive
+- just want one-off shot on DevuanWSL
+
+### `.zip`
+
+1. Download `Devuan.zip` and `Devuan.zip.sha512` from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
+2. Verify hash to avoid file corruption
+3. Extract all files in zip file to same directory (e.g. `D:\WSL\Devuan`)
+4. Run `Devuan.exe` to extract rootfs and register to WSL
+
+`Devuan` in `Devuan.exe` is used as WSL distro label.
 It's possible to have multiple installs by renaming it to something like `Dedede.exe`.
 
-## Uninstall
+To uninstall:
 
 ```powershell
+# path to DevuanWSL directory
+# cd D:\WSL\Devuan
 .\Devuan.exe clean
+```
+
+### `.wsl`
+
+1. Download `Devuan.wsl` and `Devuan.wsl.sha512` from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
+2. Verify hash to avoid file corruption
+3. Click `Devuan.wsl` to install
+4. Finish the prompted oobe and create a new user
+
+To uninstall:
+
+```powershell
+wsl --unregister Devuan
 ```
 
 ## Usage
@@ -75,14 +101,14 @@ Usage:
 
 DevuanWSL can be built on GNU/Linux or WSL.
 
-`curl`, `jq`, `unzip` and `zip` is required for build.
+`curl`, `unzip` and `zip` is required for build.
 `pigz` is recommended over `gzip` and used by default.
 
 ```bash
 # Install build tools
-sudo apt install -y curl jq pigz tar unzip zip
+sudo apt install -y curl pigz tar unzip zip
 # Make release
-# Use `sudo` here as partitions mounted via WSL are owned by current user
+# use `sudo` here as partitions mounted via WSL are owned by current user
 # (e.g. UID 1000) but rootfs requires root aka. UID 0
 sudo ./build.sh
 ```

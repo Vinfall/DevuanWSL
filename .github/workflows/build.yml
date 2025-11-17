@@ -25,16 +25,16 @@ jobs:
       - name: build
         run: |
           mkdir -p release
-          sudo apt install -y curl jq pigz tar unzip zip
+          sudo apt install -y curl pigz tar unzip zip
           sudo ./build.sh
-          mv Devuan.zip* release/
+          mv Devuan.* release/
       - name: upload as artifact
         uses: actions/upload-artifact@v5
         with:
           retention-days: 90
           path: release/*
       - name: upload as release
-        run: gh release upload "${TAG}" --clobber release/Devuan.zip*
+        run: gh release upload "${TAG}" --clobber release/Devuan.*
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: action-build
