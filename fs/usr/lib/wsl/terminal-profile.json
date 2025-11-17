@@ -1,0 +1,12 @@
+{
+    "profiles": [
+        {
+            "closeOnExit": "automatic",
+            "cursorShape": "bar",
+            "font": {
+                "size": 11
+            },
+            "opacity": 95
+        }
+    ]
+}

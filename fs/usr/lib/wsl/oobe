@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -ue
+
+DEFAULT_GROUPS='audio,video,cdrom'
+DEFAULT_UID='1000'
+
+printf 'Please create a new user.\n'
+printf 'For more information visit: https://aka.ms/wslusers\n'
+
+if getent passwd "$DEFAULT_UID" > /dev/null ; then
+    printf 'User exists, skipping creation\n'
+    exit 0
+fi
+
+while read -r -p 'Enter new username: ' username; do
+    if useradd -m -G "$DEFAULT_GROUPS" --shell=/bin/bash -u "$DEFAULT_UID" --create-home "$username" && passwd "$username"; then
+        break
+    else
+        userdel -r "$username"
+    fi
+done

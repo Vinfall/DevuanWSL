@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches: [main]
-    paths: [Makefile] # trigger only on Makefile change
+    paths: [build.sh] # trigger only on build.sh change
   workflow_dispatch:
   schedule:
     # trigger on the 1st day of every month at 12:00 UTC
@@ -25,9 +25,8 @@ jobs:
       - name: build
         run: |
           mkdir -p release
-          sudo apt install -y curl libarchive-tools jq tar unzip
-          sudo make
-          sudo make clean
+          sudo apt install -y curl jq pigz tar unzip zip
+          sudo ./build.sh
           mv Devuan.zip* release/
       - name: upload as artifact
         uses: actions/upload-artifact@v5

@@ -75,17 +75,16 @@ Usage:
 
 DevuanWSL can be built on GNU/Linux or WSL.
 
-`curl`, `bsdtar`, `jq` and `unzip` is required for build.
+`curl`, `jq`, `unzip` and `zip` is required for build.
+`pigz` is recommended over `gzip` and used by default.
 
 ```bash
 # Install build tools
-sudo apt install -y curl libarchive-tools jq unzip
+sudo apt install -y curl jq pigz tar unzip zip
 # Make release
 # Use `sudo` here as partitions mounted via WSL are owned by current user
 # (e.g. UID 1000) but rootfs requires root aka. UID 0
-sudo make
-# Clean-up using `sudo` as some files are owned by root
-sudo make clean
+sudo ./build.sh
 ```
 
 ## Backup
