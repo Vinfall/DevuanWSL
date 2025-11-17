@@ -1,0 +1,36 @@
+# TLDR: https://editorconfig.org
+# Docs: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+# Do NOT look for .editorconfig in parent directories
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+# max_line_length = 120
+
+[*.{json,jsonc}]
+max_line_length = off
+insert_final_newline = false
+
+[*.{md,markdown,rmd}]
+max_line_length = off
+# rescue double whitespace as line break
+trim_trailing_whitespace = false
+
+[*.{yaml,yml,toml}]
+indent_style = space
+indent_size = 2
+
+[{Makefile,GNUmakefile}]
+indent_style = tab
+
+[{.gitattributes,.gitignore}]
+insert_final_newline = true
+
+[COMMIT_EDITMSG]
+max_line_length = off
