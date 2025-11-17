@@ -1,8 +1,9 @@
 # config
 .vscode
 # make cache
-*.zip
 *.exe
+*.wsl
+*.zip
 rootfs.*
 ziproot
 *.sha*
