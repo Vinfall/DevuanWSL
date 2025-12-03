@@ -6,7 +6,10 @@ permissions:
 on:
   push:
     branches: [main]
-    paths: [build.sh] # trigger only on build.sh change
+    # trigger only on build file change
+    paths:
+      - build.sh
+      - .mise.toml
   workflow_dispatch:
   schedule:
     # trigger on the 1st day of every month at 12:00 UTC
@@ -22,11 +25,16 @@ jobs:
           ref: main
           persist-credentials: false
           fetch-depth: 0 # required to push refs
+
+      - name: setup mise
+        id: setup-mise
+        uses: jdx/mise-action@v3
+
       - name: build
         run: |
           mkdir -p release
           sudo apt install -y curl pigz tar unzip zip
-          sudo ./build.sh
+          mise run "build:*"
           mv Devuan.* release/
       - name: upload as artifact
         uses: actions/upload-artifact@v5
