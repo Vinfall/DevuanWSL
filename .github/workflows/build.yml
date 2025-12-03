@@ -6,10 +6,7 @@ permissions:
 on:
   push:
     branches: [main]
-    # trigger only on build file change
-    paths:
-      - build.sh
-      - .mise.toml
+    paths: [.mise.toml] # trigger only on build file change
   workflow_dispatch:
   schedule:
     # trigger on the 1st day of every month at 12:00 UTC
