@@ -34,6 +34,7 @@ jobs:
         run: |
           mkdir -p release
           sudo apt install -y curl pigz tar unzip zip
+          mise run download
           mise run "build:*"
           mv Devuan.* release/
       - name: upload as artifact
