@@ -21,7 +21,8 @@ You can use `.wsl` if:
 - you don't mind installing WSL to system drive
 - just want one-off shot on DevuanWSL
 
-### `.zip`
+<details name="install" open>
+<summary>Install via .zip</summary>
 
 1. Download `Devuan.zip` and `Devuan.zip.sha512` from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
 2. Verify hash to avoid file corruption
@@ -39,7 +40,10 @@ To uninstall:
 .\Devuan.exe clean
 ```
 
-### `.wsl`
+</details>
+
+<details name="install">
+<summary>Install via .wsl</summary>
 
 1. Download `Devuan.wsl` and `Devuan.wsl.sha512` from [releases](https://github.com/Vinfall/DevuanWSL/releases/tag/action-build)
 2. Verify hash to avoid file corruption
@@ -51,6 +55,8 @@ To uninstall:
 ```powershell
 wsl --unregister Devuan
 ```
+
+</details>
 
 ## Usage
 
