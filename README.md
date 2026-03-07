@@ -6,6 +6,9 @@ powered by [wsldl](https://github.com/yuk7/wsldl).
 This fork is based on Excalibur released on 2025-11-02,
 whose Debian cousin is Trixie aka. Debian 13.
 
+> [!NOTE]
+> Maintenance mode. I'll fix the CI if anything goes wrong, but I no longer use it myself.
+
 ## Disclaimer
 
 THIS REPO IS NOT AFFILIATED TO THE OFFICIAL "DEVUAN LINUX" DISTRIBUTION IN ANY WAY!
